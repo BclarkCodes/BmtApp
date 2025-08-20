@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education for All Alliance | HON490</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles & Color Palette -->
+    <style>
+        /* Define custom color properties for easy use */
+        :root {
+            --rich-amber: #D97706;
+            --dark-amber: #92400E;
+            --accent-gold: #F59E0B;
+            --light-gold: #FCD34D;
+            --warm-brown: #78350F;
+            --dark-brown: #451A03;
+            --cream-bg: #FFFBEB;
+            --light-cream: #FEF3C7;
+        }
+
+        /* Apply custom fonts */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream-bg);
+            color: var(--warm-brown);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Merriweather', serif;
+            color: var(--dark-amber);
+        }
+
+        /* Custom classes for theme colors */
+        .bg-rich-amber { background-color: var(--rich-amber); }
+        .text-rich-amber { color: var(--rich-amber); }
+        .bg-dark-amber { background-color: var(--dark-amber); }
+        .text-dark-amber { color: var(--dark-amber); }
+        .bg-accent-gold { background-color: var(--accent-gold); }
+        .text-accent-gold { color: var(--accent-gold); }
+        .bg-warm-brown { background-color: var(--warm-brown); }
+        .text-warm-brown { color: var(--warm-brown); }
+        .bg-cream-bg { background-color: var(--cream-bg); }
+        .bg-light-cream { background-color: var(--light-cream); }
+        .border-rich-amber { border-color: var(--rich-amber); }
+        .border-accent-gold { border-color: var(--accent-gold); }
+
+        /* Smooth transitions for interactive elements */
+        .transition-all {
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Card hover effect */
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* High Contrast Mode */
+        body.high-contrast {
+            background-color: #000;
+            color: #fff;
+        }
+        body.high-contrast h1,
+        body.high-contrast h2,
+        body.high-contrast h3,
+        body.high-contrast h4,
+        body.high-contrast h5,
+        body.high-contrast h6 {
+            color: #FFFF00; /* Yellow for high visibility */
+        }
+        body.high-contrast .bg-cream-bg,
+        body.high-contrast .bg-light-cream {
+            background-color: #1a1a1a;
+        }
+        body.high-contrast .text-warm-brown,
+        body.high-contrast .text-dark-amber {
+            color: #fff;
+        }
+        body.high-contrast .border-rich-amber {
+            border-color: #FFFF00;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header id="header" class="bg-cream-bg sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <!-- UN SDG #4 Badge -->
+                <div class="w-12 h-12">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" aria-label="UN Sustainable Development Goal 4: Quality Education">
+                        <path fill="#C5192D" d="M0 0h100v100H0z"/>
+                        <path fill="#FFF" d="M82.3 69.5c-1.2-1.2-2.8-2.3-4.5-3.1-1.2-.6-2.5-1.1-3.7-1.7-1.3-.6-2.6-1.3-3.8-2-1.2-.7-2.3-1.5-3.4-2.4-1.1-.9-2.1-1.9-3-3-1-1.1-1.8-2.3-2.5-3.6s-1.3-2.7-1.7-4.2c-.4-1.4-.7-2.9-.8-4.4-.1-1.5-.1-3.1-.1-4.6 0-1 .1-2 .2-3 .2-1 .4-2 .7-3 .3-1 .7-2 1.1-2.9.4-.9.9-1.8 1.5-2.6.6-.8 1.2-1.6 2-2.3.7-.7 1.5-1.3 2.3-1.9.8-.6 1.7-1.1 2.6-1.5.9-.4 1.8-.8 2.8-1.1 1-.3 2-.5 3-.7 1-.2 2-.3 3-.4h.2c.5 0 1 .1 1.5.1.5.1 1 .2 1.5.3.5.1 1 .3 1.5.5.5.2.9.4 1.4.6.5.2.9.5 1.4.8.4.3.9.6 1.3.9.4.3.8.7 1.2 1.1.4.4.8.8 1.1 1.2.3.4.6.8.9 1.3.3.5.5.9.8 1.4.2.5.4.9.6 1.4.2.5.3 1 .5 1.5.1.5.2 1 .3 1.5.1.5.1 1 .2 1.5v.1c0 .5 0 1-.1 1.5s-.1 1-.2 1.5c-.1.5-.3 1-.5 1.5-.2.5-.4 1-.6 1.5-.2.5-.5.9-.8 1.4-.3.5-.6.9-.9 1.3-.4.4-.8.8-1.2 1.2-.4.4-.8.8-1.3 1.1-.5.3-1 .6-1.5.9-.5.3-1 .6-1.5.8-.5.2-1 .5-1.5.6-.5.2-1 .3-1.5.5-.5.1-1 .2-1.5.3-.5.1-1 .1-1.5.1h-.1c-.5 0-1 0-1.5-.1s-1-.1-1.5-.2c-.5-.1-1-.2-1.5-.4-.5-.2-.9-.4-1.4-.6-.5-.2-.9-.5-1.4-.8-.4-.3-.9-.6-1.3-.9-.4-.3-.8-.7-1.2-1.1-.4-.4-.8-.8-1.1-1.2-.3-.4-.6-.8-.9-1.3-.3-.5-.5-.9-.8-1.4-.2-.5-.4-.9-.6-1.4-.2-.5-.3-1-.5-1.5-.1-.5-.2-1-.3-1.5-.1-.5-.1-1-.2-1.5v-.1c0-.5 0-1 .1-1.5s.1-1 .2-1.5c.1-.5.3-1 .5-1.5.2-.5.4-1 .6-1.5.2-.5.5-.9.8-1.4.3-.5.6-.9.9-1.3.4-.4.8-.8 1.2-1.2.4-.4.8-.8 1.3-1.1.5-.3 1-.6 1.5-.9.5-.3 1-.6 1.5-.8.5-.2 1-.5 1.5-.6.5-.2 1-.3 1.5-.5.5-.1 1-.2 1.5-.3.5-.1 1-.1 1.5-.1h.1c.5 0 1 0 1.5.1s1 .1 1.5.2c.5.1 1 .2 1.5.4.5.2.9.4 1.4.6.5.2.9.5 1.4.8.4.3.9.6 1.3.9.4.3.8.7 1.2 1.1.4.4.8.8 1.1 1.2.3.4.6.8.9 1.3.3.5.5.9.8 1.4.2.5.4.9.6 1.4.2.5.3 1 .5 1.5.1.5.2 1 .3 1.5.1.5.1 1 .2 1.5v.1c0 .5 0 1-.1 1.5s-.1 1-.2 1.5c-.1.5-.3 1-.5 1.5-.2.5-.4 1-.6 1.5-.2.5-.5.9-.8 1.4-.3.5-.6.9-.9 1.3-.4.4-.8.8-1.2 1.2-.4.4-.8.8-1.3-1.1z M50 17.5L17.7 82.5h10.2L38.1 62h23.8l10.2 20.5H82.3L50 17.5zm4.8 34.2H45.2L50 38.4l4.8 13.3z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-black text-dark-amber">Education for All Alliance</h1>
+                    <p class="text-xs md:text-sm text-warm-brown">AI-Powered Adaptive Learning & Wellness Platform</p>
+                </div>
+            </div>
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-warm-brown hover:text-rich-amber transition-all">Home</a>
+                <a href="#features" class="text-warm-brown hover:text-rich-amber transition-all">Features</a>
+                <a href="#demo" class="text-warm-brown hover:text-rich-amber transition-all">Demo</a>
+                <a href="#team" class="text-warm-brown hover:text-rich-amber transition-all">Team</a>
+                <a href="#impact" class="text-warm-brown hover:text-rich-amber transition-all">Impact</a>
+                <a href="#contact" class="text-warm-brown hover:text-rich-amber transition-all">Contact</a>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-dark-amber focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="#home" class="block py-2 px-4 text-sm text-warm-brown hover:bg-light-cream">Home</a>
+            <a href="#features" class="block py-2 px-4 text-sm text-warm-brown hover:bg-light-cream">Features</a>
+            <a href="#demo" class="block py-2 px-4 text-sm text-warm-brown hover:bg-light-cream">Demo</a>
+            <a href="#team" class="block py-2 px-4 text-sm text-warm-brown hover:bg-light-cream">Team</a>
+            <a href="#impact" class="block py-2 px-4 text-sm text-warm-brown hover:bg-light-cream">Impact</a>
+            <a href="#contact" class="block py-2 px-4 text-sm text-warm-brown hover:bg-light-cream">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="bg-light-cream py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl md:text-6xl font-black mb-4 leading-tight">Transforming Education for Every Child Through AI</h2>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 text-warm-brown">Our adaptive learning platform provides personalized academic pathways and integrated mental health support, ensuring children with learning disabilities can achieve their full potential.</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#demo" class="bg-rich-amber text-white font-bold py-3 px-8 rounded-full hover:bg-dark-amber transition-all shadow-lg">View Demo</a>
+                    <a href="#features" class="bg-accent-gold text-dark-brown font-bold py-3 px-8 rounded-full hover:bg-rich-amber hover:text-white transition-all shadow-lg">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Features Section -->
+        <section id="features" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold">An Integrated Approach to Learning and Wellness</h3>
+                    <p class="text-lg text-warm-brown mt-2">Our platform is built on four core pillars designed to support the whole child.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Feature 1: Adaptive Learning -->
+                    <div class="feature-card bg-white p-8 rounded-lg shadow-md border-t-4 border-rich-amber transition-all">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-light-cream mb-4">
+                            <svg class="w-8 h-8 text-rich-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">Adaptive Learning</h4>
+                        <p class="text-warm-brown">Our AI core adjusts lesson difficulty and teaching methods in real-time, matching each child's unique pace and learning style for optimal comprehension.</p>
+                    </div>
+                    <!-- Feature 2: Mental Health Support -->
+                    <div class="feature-card bg-white p-8 rounded-lg shadow-md border-t-4 border-accent-gold transition-all">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-light-cream mb-4">
+                            <svg class="w-8 h-8 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">Mental Health Support</h4>
+                        <p class="text-warm-brown">Integrated tools like mood tracking, guided breathing exercises, and positive reinforcement help build emotional resilience and wellness.</p>
+                    </div>
+                    <!-- Feature 3: Social Skills Coaching -->
+                    <div class="feature-card bg-white p-8 rounded-lg shadow-md border-t-4 border-rich-amber transition-all">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-light-cream mb-4">
+                            <svg class="w-8 h-8 text-rich-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">Social Skills Coaching</h4>
+                        <p class="text-warm-brown">Interactive scenarios and AI-driven conversation training provide a safe space for children to practice and improve their social interactions.</p>
+                    </div>
+                    <!-- Feature 4: Accessibility Features -->
+                    <div class="feature-card bg-white p-8 rounded-lg shadow-md border-t-4 border-accent-gold transition-all">
+                        <div class="flex items-center justify-center h-16 w-16 rounded-full bg-light-cream mb-4">
+                            <svg class="w-8 h-8 text-accent-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                        </div>
+                        <h4 class="text-xl font-bold mb-2">Accessibility Features</h4>
+                        <p class="text-warm-brown">A fully customizable interface with speech-to-text, visual aids, adjustable fonts, and high-contrast modes to meet diverse needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demo Section -->
+        <section id="demo" class="py-20 bg-light-cream">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold">Experience the Platform</h3>
+                    <p class="text-lg text-warm-brown mt-2">Interact with a live demo to see how our AI-powered features work.</p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-xl p-8 border border-gray-200">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+                        <!-- Left Column: Learning & Social -->
+                        <div>
+                            <!-- Adaptive Math Problem -->
+                            <div class="mb-8">
+                                <h4 class="text-xl font-bold mb-4">1. Adaptive Learning: Math Challenge</h4>
+                                <div id="math-problem-container" class="bg-gray-100 p-6 rounded-lg">
+                                    <p class="text-lg text-center font-semibold mb-4" id="math-question">What is 5 + 7?</p>
+                                    <div id="math-options" class="grid grid-cols-2 gap-4">
+                                        <button class="math-option bg-rich-amber text-white p-3 rounded-lg hover:bg-dark-amber transition-all">12</button>
+                                        <button class="math-option bg-rich-amber text-white p-3 rounded-lg hover:bg-dark-amber transition-all">10</button>
+                                        <button class="math-option bg-rich-amber text-white p-3 rounded-lg hover:bg-dark-amber transition-all">11</button>
+                                        <button class="math-option bg-rich-amber text-white p-3 rounded-lg hover:bg-dark-amber transition-all">13</button>
+                                    </div>
+                                    <p id="math-feedback" class="text-center mt-4 font-semibold"></p>
+                                </div>
+                            </div>
+
+                            <!-- Social Skills Scenario -->
+                            <div>
+                                <h4 class="text-xl font-bold mb-4">2. Social Skills: Making a Friend</h4>
+                                <div class="bg-gray-100 p-6 rounded-lg">
+                                    <p class="mb-4">You see a new student sitting alone at lunch. What do you do?</p>
+                                    <div id="social-options" class="space-y-3">
+                                        <button class="social-option w-full text-left bg-white p-3 rounded-lg border border-gray-300 hover:bg-blue-100 hover:border-blue-400 transition-all">A) Ignore them and sit with your friends.</button>
+                                        <button class="social-option w-full text-left bg-white p-3 rounded-lg border border-gray-300 hover:bg-blue-100 hover:border-blue-400 transition-all">B) Go over and say, "Hi, my name is Alex. Can I sit here?"</button>
+                                        <button class="social-option w-full text-left bg-white p-3 rounded-lg border border-gray-300 hover:bg-blue-100 hover:border-blue-400 transition-all">C) Ask your friends what they think you should do.</button>
+                                    </div>
+                                    <p id="social-feedback" class="mt-4 font-semibold"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Wellness & Accessibility -->
+                        <div>
+                             <!-- Mental Health Check-in -->
+                            <div class="mb-8">
+                                <h4 class="text-xl font-bold mb-4">3. Mental Health: How are you feeling?</h4>
+                                <div class="bg-gray-100 p-6 rounded-lg">
+                                    <div id="mood-tracker" class="flex justify-around items-center">
+                                        <span class="mood-emoji text-5xl cursor-pointer transform hover:scale-125 transition-transform" data-mood="Happy">😊</span>
+                                        <span class="mood-emoji text-5xl cursor-pointer transform hover:scale-125 transition-transform" data-mood="Okay">😐</span>
+                                        <span class="mood-emoji text-5xl cursor-pointer transform hover:scale-125 transition-transform" data-mood="Sad">😢</span>
+                                        <span class="mood-emoji text-5xl cursor-pointer transform hover:scale-125 transition-transform" data-mood="Anxious">😟</span>
+                                        <span class="mood-emoji text-5xl cursor-pointer transform hover:scale-125 transition-transform" data-mood="Angry">😠</span>
+                                    </div>
+                                    <p id="mood-feedback" class="text-center mt-4 font-semibold"></p>
+                                </div>
+                            </div>
+
+                            <!-- Accessibility Settings -->
+                            <div>
+                                <h4 class="text-xl font-bold mb-4">4. Accessibility Settings</h4>
+                                <div class="bg-gray-100 p-6 rounded-lg space-y-4">
+                                    <div>
+                                        <label for="font-size-slider" class="font-semibold">Font Size</label>
+                                        <div class="flex items-center space-x-4">
+                                            <span class="text-sm">A</span>
+                                            <input id="font-size-slider" type="range" min="12" max="24" value="16" class="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer">
+                                            <span class="text-2xl">A</span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label class="font-semibold">Contrast Mode</label>
+                                        <button id="contrast-toggle" class="w-full bg-accent-gold text-dark-brown font-bold p-3 rounded-lg hover:bg-rich-amber hover:text-white transition-all mt-2">Toggle High Contrast</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team" class="py-20">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h3 class="text-3xl md:text-4xl font-bold">Our Team</h3>
+                    <p class="text-lg text-warm-brown mt-2">Meet the passionate students behind the Education for All Alliance.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <!-- Team Member 1 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <img src="https://placehold.co/150x150/FEF3C7/78350F?text=MM" alt="Monica McNair" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-light-cream">
+                        <h4 class="text-xl font-bold">Monica McNair</h4>
+                        <p class="text-rich-amber font-semibold mb-2">Project Lead & AI Specialist</p>
+                        <p class="text-warm-brown text-sm">Monica leads the project vision and oversees the development of the adaptive learning algorithms, ensuring our AI is both effective and ethical.</p>
+                    </div>
+                    <!-- Team Member 2 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <img src="https://placehold.co/150x150/FEF3C7/78350F?text=BC" alt="Brian Clark" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-light-cream">
+                        <h4 class="text-xl font-bold">Brian Clark</h4>
+                        <p class="text-rich-amber font-semibold mb-2">UX/UI & Frontend Developer</p>
+                        <p class="text-warm-brown text-sm">Brian crafts the user experience, focusing on creating an intuitive, accessible, and engaging interface for children, parents, and educators.</p>
+                    </div>
+                    <!-- Team Member 3 -->
+                    <div class="bg-white p-8 rounded-lg shadow-md">
+                        <img src="https://placehold.co/150x150/FEF3C7/78350F?text=TB" alt="Tonya Barnes" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-light-cream">
+                        <h4 class="text-xl font-bold">Tonya Barnes</h4>
+                        <p class="text-rich-amber font-semibold mb-2">Research & Content Strategist</p>
+                        <p class="text-warm-brown text-sm">Tonya grounds our work in evidence-based practices, conducting research and developing content for mental wellness and social skills modules.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problem, Solution & Research Section -->
+        <section id="impact" class="py-20 bg-light-cream">
+            <div class="container mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Left Column: Problem & Solution -->
+                    <div>
+                        <h3 class="text-3xl font-bold mb-4">Our Mission</h3>
+                        <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                            <h4 class="text-xl font-bold mb-2">The Problem</h4>
+                            <p class="text-warm-brown">Children with learning disabilities often face significant educational barriers. Many existing digital tools are one-size-fits-all, failing to support the diverse spectrum of learning needs. Compounded by the reduction of specialized support in schools and the impact of mental health challenges, a critical gap exists in providing effective, personalized education.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold mb-2">Our Solution & Hypothesis</h4>
+                            <p class="text-warm-brown"><strong>Hypothesis:</strong> If we provide higher quality, personalized education for children with learning disabilities, then we can deliver one-on-one AI-powered experiences that adapt to each child's unique academic and emotional needs, leading to improved outcomes and greater well-being.</p>
+                        </div>
+                    </div>
+                    <!-- Right Column: Research & Impact -->
+                    <div>
+                        <h3 class="text-3xl font-bold mb-4">Research & Global Impact</h3>
+                        <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+                            <h4 class="text-xl font-bold mb-2">Evidence-Based Foundation</h4>
+                            <p class="text-warm-brown">Our approach is built upon a strong foundation of scholarly research in special education, AI, and developmental psychology. We have compiled an extensive annotated bibliography of peer-reviewed sources that validate the effectiveness of adaptive technology and integrated wellness support. This ensures our design decisions are evidence-based and impactful.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="text-xl font-bold mb-2">Technology & Security</h4>
+                            <p class="text-warm-brown">We leverage AI/ML for adaptive learning, NLP for social coaching, and computer vision for engagement analytics. Privacy is paramount; we are committed to compliance with COPPA, HIPAA, and GDPR, using end-to-end encryption and transparent consent protocols to protect user data.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12 bg-white p-8 rounded-lg shadow-lg border-t-4 border-rich-amber">
+                    <h4 class="text-2xl font-bold">Making Earth a Better Planet</h4>
+                    <p class="text-lg text-warm-brown mt-2 max-w-4xl mx-auto">By providing 24/7, accessible, and high-quality support, we aim to help over <strong>10 million children</strong>, projecting an <strong>85% improvement</strong> in learning outcomes. Our work directly addresses UN SDG #4, promoting inclusive and equitable education for all and fostering a more sustainable future.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-dark-brown text-cream-bg py-12">
+        <div class="container mx-auto px-6 text-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/University_of_Arizona_Global_Campus_logo.svg" alt="University of Arizona Global Campus Logo" class="h-12 mx-auto mb-4 filter invert brightness-0">
+            <p class="font-semibold">University of Arizona Global Campus</p>
+            <p class="text-sm mb-4">HON490: Honors Program Capstone</p>
+            <p class="text-sm">This project is a conceptual demonstration for academic purposes.</p>
+            <p class="text-sm mt-2">For inquiries, please contact the team via our academic advisors.</p>
+            <div class="mt-6">
+                <p class="text-xs text-light-cream">© 2025 Education for All Alliance. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // --- INTERACTIVE DEMO LOGIC ---
+
+            // 1. Adaptive Math Problem
+            const mathQuestion = document.getElementById('math-question');
+            const mathOptionsContainer = document.getElementById('math-options');
+            const mathFeedback = document.getElementById('math-feedback');
+            let mathLevel = 1; // Start at level 1
+
+            const mathProblems = {
+                1: { question: "What is 5 + 7?", answer: 12, options: [12, 10, 11, 13] },
+                2: { question: "What is 15 - 6?", answer: 9, options: [8, 9, 10, 21] },
+                3: { question: "What is 4 x 6?", answer: 24, options: [10, 20, 24, 28] },
+                4: { question: "What is 35 / 5?", answer: 7, options: [5, 6, 7, 8] },
+                0: { question: "What is 3 + 2?", answer: 5, options: [4, 5, 6, 7] }, // Easier problem
+            };
+
+            function loadMathProblem(level) {
+                const problem = mathProblems[level];
+                mathQuestion.textContent = problem.question;
+                mathOptionsContainer.innerHTML = '';
+                // Shuffle options for variety
+                problem.options.sort(() => Math.random() - 0.5).forEach(opt => {
+                    const button = document.createElement('button');
+                    button.className = 'math-option bg-rich-amber text-white p-3 rounded-lg hover:bg-dark-amber transition-all';
+                    button.textContent = opt;
+                    button.addEventListener('click', () => checkMathAnswer(opt, problem.answer));
+                    mathOptionsContainer.appendChild(button);
+                });
+                mathFeedback.textContent = '';
+            }
+
+            function checkMathAnswer(selected, correct) {
+                if (selected === correct) {
+                    mathFeedback.textContent = "Correct! Great job! Here's a harder one.";
+                    mathFeedback.style.color = '#16A34A'; // Green
+                    mathLevel = Math.min(mathLevel + 1, 4); // Increase level, max 4
+                } else {
+                    mathFeedback.textContent = "Not quite, let's try an easier one to build confidence.";
+                    mathFeedback.style.color = '#DC2626'; // Red
+                    mathLevel = Math.max(mathLevel - 1, 0); // Decrease level, min 0
+                }
+                setTimeout(() => loadMathProblem(mathLevel), 2000);
+            }
+
+            loadMathProblem(mathLevel);
+
+            // 2. Mood Tracker
+            const moodEmojis = document.querySelectorAll('.mood-emoji');
+            const moodFeedback = document.getElementById('mood-feedback');
+            const moodResponses = {
+                Happy: "It's wonderful you're feeling happy! Let's keep that positive energy going.",
+                Okay: "Feeling okay is perfectly fine. Let's see if we can make today even better.",
+                Sad: "I'm sorry you're feeling sad. Remember it's okay to feel this way. Here's a 1-minute breathing exercise if you need it.",
+                Anxious: "Feeling anxious can be tough. Let's try to focus on the present moment. Take a few deep, slow breaths.",
+                Angry: "It's okay to feel angry sometimes. Let's take a moment to cool down. How about a quick, calming activity?"
+            };
+
+            moodEmojis.forEach(emoji => {
+                emoji.addEventListener('click', () => {
+                    // Reset styles
+                    moodEmojis.forEach(e => {
+                        e.style.transform = 'scale(1)';
+                        e.style.opacity = '0.7';
+                    });
+                    // Highlight selected
+                    emoji.style.transform = 'scale(1.25)';
+                    emoji.style.opacity = '1';
+
+                    const mood = emoji.dataset.mood;
+                    moodFeedback.textContent = moodResponses[mood];
+                    moodFeedback.style.color = 'var(--dark-amber)';
+                });
+            });
+
+            // 3. Social Skills Scenario
+            const socialOptions = document.querySelectorAll('.social-option');
+            const socialFeedback = document.getElementById('social-feedback');
+            const socialResponses = {
+                'A': { text: "This might make the new student feel more lonely. Let's try a friendlier approach.", color: '#EAB308' }, // Yellow
+                'B': { text: "Excellent choice! Being direct and friendly is a great way to make someone feel welcome.", color: '#16A34A' }, // Green
+                'C': { text: "It's good to ask for advice, but sometimes taking the first step yourself shows confidence.", color: '#3B82F6' } // Blue
+            };
+
+            socialOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    const choice = option.textContent.charAt(0);
+                    socialFeedback.textContent = `Feedback: ${socialResponses[choice].text}`;
+                    socialFeedback.style.color = socialResponses[choice].color;
+                });
+            });
+
+            // 4. Accessibility Settings
+            const fontSizeSlider = document.getElementById('font-size-slider');
+            const contrastToggle = document.getElementById('contrast-toggle');
+            const body = document.body;
+
+            fontSizeSlider.addEventListener('input', (e) => {
+                body.style.fontSize = `${e.target.value}px`;
+            });
+
+            contrastToggle.addEventListener('click', () => {
+                body.classList.toggle('high-contrast');
+            });
+        });
+    </script>
+</body>
+</html>
